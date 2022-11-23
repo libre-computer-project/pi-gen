@@ -1,2 +1,5 @@
 raspberrypi-bootloader
 raspberrypi-kernel
+grub-efi-arm64
+linux-image-lc-stable-arm64
+linux-headers-lc-stable-arm64
