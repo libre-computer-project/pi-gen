@@ -4,3 +4,6 @@ linux-image-rpi-v8
 linux-image-rpi-2712
 linux-headers-rpi-v8
 linux-headers-rpi-2712
+grub-efi-arm64
+linux-image-lc-stable-arm64
+linux-headers-lc-stable-arm64
