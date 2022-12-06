@@ -207,7 +207,7 @@ export ARCHIVE_FILENAME="${ARCHIVE_FILENAME:-"image_${IMG_DATE}-${IMG_NAME}"}"
 
 export SCRIPT_DIR="${BASE_DIR}/scripts"
 export WORK_DIR="${WORK_DIR:-"${BASE_DIR}/work/${IMG_NAME}"}"
-export DEPLOY_DIR=${DEPLOY_DIR:-"${BASE_DIR}/deploy"}
+export DEPLOY_DIR=${DEPLOY_DIR:-"$BASE_DIR/deploy"}
 
 # DEPLOY_ZIP was deprecated in favor of DEPLOY_COMPRESSION
 # This preserve the old behavior with DEPLOY_ZIP=0 where no archive was created
@@ -265,6 +265,8 @@ export QUILT_PATCHES
 export QUILT_NO_DIFF_INDEX=1
 export QUILT_NO_DIFF_TIMESTAMPS=1
 export QUILT_REFRESH_ARGS="-p ab"
+
+export BOARD
 
 # shellcheck source=scripts/common
 source "${SCRIPT_DIR}/common"
