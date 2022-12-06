@@ -18,6 +18,27 @@ if [ -f "${ROOTFS_DIR}/etc/initramfs-tools/update-initramfs.conf" ]; then
 	sed -i 's/^update_initramfs=.*/update_initramfs=yes/' "${ROOTFS_DIR}/etc/initramfs-tools/update-initramfs.conf"
 	sed -i 's/^MODULES=.*/MODULES=dep/' "${ROOTFS_DIR}/etc/initramfs-tools/initramfs.conf"
 fi
+if [ ! -z "${BOARD}" ]; then
+	case "${BOARD%%-*}" in
+		aml)
+			boot_sector=1
+			;;
+		all)
+			boot_sector=16
+			;;
+		roc)
+			boot_sector=64
+			;;
+		*)
+			echo "BOARD $board is not supported" >&2
+			false
+			;;
+	esac
+	boot_loader_file=$(mktemp)
+	wget -O "$boot_loader_file" "http://boot.libre.computer/ci/${BOARD}"
+	dd if="$boot_loader_file" of="${IMG_FILE}" bs=512 seek=$boot_sector conv=notrunc
+	rm "$boot_loader_file"
+fi
 
 if [ -d "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/.config" ]; then
 	chmod 700 "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/.config"
