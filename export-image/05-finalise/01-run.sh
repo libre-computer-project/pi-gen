@@ -10,6 +10,9 @@ fi
 if hash hardlink 2>/dev/null; then
 	hardlink -t /usr/share/doc
 fi
+update-initramfs -k all -c
+grub-install --efi-directory=/boot --force-extra-removable --no-nvram --no-uefi-secure-boot
+update-grub
 EOF
 
 if [ ! -z "${BOARD}" ]; then
