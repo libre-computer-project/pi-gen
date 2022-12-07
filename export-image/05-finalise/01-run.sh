@@ -12,7 +12,7 @@ if hash hardlink 2>/dev/null; then
 fi
 update-initramfs -k all -c
 grub-install --efi-directory=/boot --force-extra-removable --no-nvram --no-uefi-secure-boot
-update-grub
+GRUB_DISABLE_OS_PROBER=true update-grub
 EOF
 
 if [ ! -z "${BOARD}" ]; then
