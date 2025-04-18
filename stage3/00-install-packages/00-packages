@@ -18,3 +18,4 @@ python3-picamera2
 python3-pyqt5
 python3-opengl
 vulkan-tools mesa-vulkan-drivers
+xserver-xorg-video-libretech
